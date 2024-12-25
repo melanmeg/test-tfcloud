@@ -11,7 +11,7 @@
 3. Terraform Cloud の stateファイルをプルする
 ```bash
 $ cat tmp/terraform_tfc.tf > terraform.tf
-$ rm -rf .terraform .terraform.lock.hcl terraform.*
+$ rm -rf .terraform .terraform.lock.hcl terraform.tfstate
 
 $ terraform login
   Enter a value: yes
