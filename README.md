@@ -11,7 +11,7 @@
 3. Terraform Cloud の stateファイルをプルする
 ```bash
 $ cat tmp/terraform_tfc.tf > terraform.tf
-$ rm -rf .terraform .terraform.lock.hcl
+$ rm -rf .terraform .terraform.lock.hcl terraform.*
 
 $ terraform login
   Enter a value: yes
@@ -21,7 +21,7 @@ $ terraform init
 $ terraform plan
 # 差分が表示されないこと
 
-$ terraform state pull > .terraform.tfstate
+$ terraform state pull > terraform.tfstate
 ```
 
 4. Terraform Cloud の stateファイルを指定のGCSバケットにプッシュする
@@ -30,7 +30,7 @@ $ terraform state pull > .terraform.tfstate
 $ cat tmp/terraform_gcs.tf > terraform.tf
 $ rm -rf .terraform .terraform.lock.hcl
 
-$ terraform init
+$ terraform init -migrate-state
 $ terraform plan
 # 差分が表示されないこと
 ```
