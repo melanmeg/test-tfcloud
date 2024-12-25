@@ -1,17 +1,20 @@
 # test-tfcloud
 
-## tfstate移行手順
+## tfstate移行
+Terraform Cloud -> GCSバケット
 
-- Terraform Cloud -> GCSバケット
-
+### 前提条件
 1. `test-project-373118-sample-bucket-2/test-project-373118/state/default.tfstate` があれば削除しておく。
 
 2. Terraform Cloud (test-tfcloud-workspaceワークスペース) で apply する
 
-3. Terraform Cloud の stateファイルをプルする
+3. GCSバケットアクセス権限があること
+
+### 手順
+1. Terraform Cloud の stateファイルをプルする
 ```bash
 $ cat tmp/terraform_tfc.tf > terraform.tf
-$ rm -rf .terraform .terraform.lock.hcl terraform.tfstate
+$ rm -rf .terraform .terraform.lock.hcl terraform.tfstate*
 
 $ terraform login
   Enter a value: yes
@@ -24,13 +27,16 @@ $ terraform plan
 $ terraform state pull > terraform.tfstate
 ```
 
-4. Terraform Cloud の stateファイルを指定のGCSバケットにプッシュする
+2. Terraform Cloud の stateファイルを指定のGCSバケットにプッシュする
 
 ```bash
 $ cat tmp/terraform_gcs.tf > terraform.tf
 $ rm -rf .terraform .terraform.lock.hcl
 
 $ terraform init -migrate-state
+  Enter a value: yes
 $ terraform plan
 # 差分が表示されないこと
 ```
+
+3. `test-project-373118-sample-bucket-2/test-project-373118/state/default.tfstate` にtfstateが保存されていること
