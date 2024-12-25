@@ -14,7 +14,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "example_bucket" {
-  name          = "test-project-373118-sample-bucket-n"
+  name          = "test-project-373118-sample-bucket-2"
   location      = "US"
   force_destroy = true
 
