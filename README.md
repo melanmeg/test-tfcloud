@@ -33,7 +33,7 @@ $ terraform state pull > terraform.tfstate
 $ cat tmp/terraform_gcs.tf > terraform.tf
 $ rm -rf .terraform .terraform.lock.hcl
 
-$ terraform init -migrate-state
+$ terraform init
   Enter a value: yes
 $ terraform plan
 # 差分が表示されないこと
