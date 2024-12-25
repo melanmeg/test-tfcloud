@@ -5,21 +5,27 @@ test tfcloud
 
 2. Terraform Cloud の stateファイルをプルする
 ```bash
+$ cat tmp/terraform_tfc.tf > terraform.tf
+$ rm -rf .terraform .terraform.hcl
+
 $ terraform login
   Enter a value: yes
   Enter a value: [Tokenを取得して入力]
 
 $ terraform init
 $ terraform plan
-# このとき差分が表示されないこと
+# 差分が表示されないこと
 
-$ terraform state pull > tfc.tfstate
+$ terraform state pull > .terraform.tfstate
 ```
 
 3. Terraform Cloud の stateファイルを指定のGCSバケットにプッシュする
 
 ```bash
-# ./hoge で以下を実施
+$ cat tmp/terraform_gcs.tf > terraform.tf
+$ rm -rf .terraform .terraform.hcl
 
-$ terraform state push
+$ terraform init
+$ terraform plan
+# 差分が表示されないこと
 ```
