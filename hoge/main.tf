@@ -5,6 +5,11 @@ terraform {
       version = "6.1.0"
     }
   }
+
+  backend "gcs" {
+    bucket  = "test-project-373118-sample-bucket-2"
+    prefix  = "test-project-373118/state"
+  }
 }
 
 provider "google" {
