@@ -40,3 +40,11 @@ $ terraform plan
 ```
 
 3. `test-project-373118-sample-bucket-2/test-project-373118/state/default.tfstate` にtfstateが保存されていること
+
+
+## memo
+
+```bash
+# 手順 1 のあとに実施
+$ terraform state push -force terraform.tfstate
+```

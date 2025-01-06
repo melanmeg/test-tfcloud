@@ -6,8 +6,12 @@ terraform {
     }
   }
 
-  backend "gcs" {
-    bucket  = "test-project-373118-sample-bucket"
-    prefix  = "test-project-373118/state"
+  cloud {
+    organization = "melanmeg"
+    hostname     = "app.terraform.io"
+
+    workspaces {
+      name = "test-tfcloud-workspace"
+    }
   }
 }
