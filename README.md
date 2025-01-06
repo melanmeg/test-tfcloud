@@ -42,9 +42,13 @@ $ terraform plan
 3. `test-project-373118-sample-bucket-2/test-project-373118/state/default.tfstate` にtfstateが保存されていること
 
 
-## memo
+## 空のstateをTFCにpushする
 
 ```bash
 # 手順 1 のあとに実施
+
+# terraform.tfstate の resources を空にする
+# "resources": [],
+
 $ terraform state push -force terraform.tfstate
 ```
