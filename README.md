@@ -52,5 +52,3 @@ $ terraform plan
 
 $ terraform state push -force terraform.tfstate
 ```
-
-<!-- test -->
